@@ -22,10 +22,13 @@ function downloadQR() {
         const { jsPDF } = window.jspdf;
 
         // Erstelle eine neue PDF-Datei
-        const pdf = new jsPDF();
+        const pdf = new jsPDF({
+            unit: "mm",
+            format: [200, 200] // Definiert die Größe des PDF-Dokuments in mm
+        });
 
         // Lade das Bild (QR-Code) und füge es zur PDF hinzu
-        pdf.addImage(qrImage, "PNG", 15, 40, 150, 150);
+        pdf.addImage(qrImage, "PNG", 25, 25, 150, 150);
 
         // PDF speichern
         pdf.save("QR_Code.pdf");
